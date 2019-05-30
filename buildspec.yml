@@ -4,7 +4,7 @@ env:
   variables:
     DOCKER_BUILDKIT: "1"
   parameter-store:
-    LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
+    LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword-aguni
 
 phases:
   install:
@@ -19,20 +19,20 @@ phases:
   pre_build:
     commands:
       - echo Entered the pre_build phase...
-      - docker login -u semnil -p $LOGIN_PASSWORD
+      - docker login -u aguni -p $LOGIN_PASSWORD
     finally:
       - echo This always runs even if the login command fails
   build:
     commands:
       - echo Entered the build phase...
       - echo Build started on `date`
-      - docker build --tag=semnil/beego-tutorial .
+      - docker build --tag=aguni/beego-tutorial .
     finally:
       - echo This always runs even if the build command fails
   post_build:
     commands:
       - echo Entered the post_build phase...
-      - docker push semnil/beego-tutorial
+      - docker push aguni/beego-tutorial
       - echo Build completed on `date`
     finally:
       - echo This always runs even if the push image command fails
