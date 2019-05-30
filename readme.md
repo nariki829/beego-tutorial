@@ -37,7 +37,7 @@ docker-compose restart
 
 Access `http://localhost:8080` and check running application.
 
-## STEP4
+## STEP3
 
 Deploy to AWS Elastic Beanstalk.
 
@@ -60,7 +60,7 @@ Select following options:
   - Source code origin : Local File (and select **bundle.zip** file)
 
 
-## STEP3
+## STEP4
 
 Refer to the [document](https://beego.me/docs/quickstart/#quickstart) and implement the contents of the quick start.  
 After making changes to the source code, check changes on the local environment and redeploy to Elastic Beanstalk.
