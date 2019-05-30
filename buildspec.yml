@@ -1,0 +1,42 @@
+version: 0.2
+
+env:
+  variables:
+    DOCKER_BUILDKIT: "1"
+  parameter-store:
+    LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
+
+phases:
+  install:
+    runtime-versions:
+      docker: 18
+#    commands:
+#      - echo Entered the install phase...
+#      - apt-get update -y
+#      - apt-get install -y maven
+#    finally:
+#      - echo This always runs even if the update or install command fails
+  pre_build:
+    commands:
+      - echo Entered the pre_build phase...
+      - docker login -u semnil -p $LOGIN_PASSWORD
+    finally:
+      - echo This always runs even if the login command fails
+  build:
+    commands:
+      - echo Entered the build phase...
+      - echo Build started on `date`
+      - docker build --tag=semnil/beego-tutorial .
+    finally:
+      - echo This always runs even if the build command fails
+  post_build:
+    commands:
+      - echo Entered the post_build phase...
+      - docker push semnil/beego-tutorial
+      - echo Build completed on `date`
+    finally:
+      - echo This always runs even if the push image command fails
+artifacts:
+  type: zip
+  files:
+    - 'Dockerrun.aws.json'

@@ -1,0 +1,35 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      golang: 1.12
+#    commands:
+#      - echo Entered the install phase...
+#      - apt-get update -y
+#      - apt-get install -y maven
+#    finally:
+#      - echo This always runs even if the update or install command fails
+  pre_build:
+    commands:
+      - echo Entered the pre_test phase...
+      - go get -t -v ./...
+    finally:
+      - echo This always runs even if the go get command fails
+  build:
+    commands:
+      - echo Entered the test phase...
+      - echo Test started on `date`
+      - go test ./...
+    finally:
+      - echo This always runs even if the test command fails
+#  post_build:
+#    commands:
+#      - echo Entered the post_test phase...
+#      - echo Test completed on `date`
+#    finally:
+#      - echo This always runs even if any command fails
+artifacts:
+  type: zip
+  files:
+    - 'Dockerrun.aws.json'
