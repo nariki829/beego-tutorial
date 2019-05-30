@@ -75,7 +75,7 @@
 
 <body>
   <header>
-    <h1 class="logo">aguni nari</h1>
+    <h1 class="logo">aguni nariaaaaaaaaaaaaaa</h1>
     <div class="description">
       Beego is a simple & powerful Go web framework which is inspired by tornado and sinatra.
     </div>
@@ -83,7 +83,7 @@
   <footer>
     <div class="author">
       Official website:
-      <a href="http://{{.Website}}">{{.Website}}</a> /
+      <a href="https://www.amazon.co.jp/">{{.Website}}</a> /
       Contact me:
       <a class="email" href="mailto:{{.Email}}">{{.Email}}</a>
     </div>
